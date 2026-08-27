@@ -24,6 +24,7 @@ export const NAV_LINKS = [
   { label: 'About', href: '/about' },
   { label: 'Gallery', href: '/gallery' },
   { label: 'Pricing', href: '/pricing' },
+  { label: 'FAQ', href: '/faq' },
   { label: 'Contact', href: '/contact' },
 ];
 
@@ -99,3 +100,58 @@ export const REVIEWS = [
 
 export const ACCENT = '#da8990';
 export const ACCENT_HOVER = '#e8a8ae';
+
+export type FaqItem = {
+  question: string;
+  answer: string;
+  link?: {
+    href: string;
+    label: string;
+  };
+};
+
+export const FAQS: FaqItem[] = [
+  {
+    question: 'Do you provide tables, chairs, decor, etc.?',
+    answer:
+      'We are an all-inclusive venue, our venue sits 65 guests comfortably. Our packages are designed to provide the very least stress possible.',
+  },
+  {
+    question: 'What do you require to reserve the date?',
+    answer:
+      'We require a $200 non-refundable retainer to hold your date. The remaining balance is due 3 weeks before the event.',
+  },
+  {
+    question: 'Is there a kitchen area?',
+    answer:
+      'We do not have a kitchen on site, all food must come prepared to serve.',
+  },
+  {
+    question: 'Can I bring in outside catering?',
+    answer:
+      'Yes, all caterers are welcome! Ask us about our in-house catering options as well.',
+  },
+  {
+    question: 'Are food trucks allowed?',
+    answer:
+      'Yes. All food trucks require prior approval and must be stationed in the designated parking area.',
+  },
+  {
+    question: 'What is your alcohol policy?',
+    answer:
+      'We require the use of our in-house TABC certified and insured bar staff for all events with alcohol. No outside bar vendors are permitted. The client is to provide all the alcohol for the bar staff to serve.',
+  },
+  {
+    question: 'What is your cancellation policy?',
+    answer:
+      'If a client chooses to cancel their event, the client may opt to reschedule to a later date within 12 months of the original event date.',
+  },
+  {
+    question: 'How can we arrange a tour?',
+    answer: 'Tours are by appointment only.',
+    link: {
+      href: '/contact',
+      label: 'Schedule a tour',
+    },
+  },
+];
