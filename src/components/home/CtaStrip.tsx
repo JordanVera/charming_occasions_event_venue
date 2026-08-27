@@ -1,19 +1,28 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Phone } from 'lucide-react';
 import { COMPANY } from '@/lib/data';
 
 export default function CtaStrip() {
   return (
-    <section className="relative py-24 px-6 lg:px-8 bg-[#da8990] overflow-hidden">
-      <div className="relative max-w-4xl mx-auto text-center">
+    <section className="relative overflow-hidden py-24 px-6 lg:px-8">
+      <Image
+        src="/gallery/gallery-12.jpeg"
+        alt="Tables set for a celebration at Charming Occasions"
+        fill
+        className="object-cover object-center"
+        sizes="100vw"
+      />
+      <div className="absolute inset-0 bg-black/55" />
+      <div className="relative z-10 mx-auto max-w-4xl text-center">
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-black/50 text-[10px] tracking-[0.4em] uppercase mb-4"
+          className="mb-4 text-[10px] tracking-[0.4em] text-[#da8990] uppercase"
         >
           Plan Your Celebration
         </motion.p>
@@ -22,7 +31,7 @@ export default function CtaStrip() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="font-serif text-black text-4xl sm:text-5xl md:text-6xl leading-tight mb-6"
+          className="mb-6 font-serif text-4xl leading-tight text-white sm:text-5xl md:text-6xl"
         >
           Let&apos;s Make It <em className="italic">Unforgettable</em>
         </motion.h2>
@@ -31,7 +40,7 @@ export default function CtaStrip() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="text-black/65 text-base sm:text-lg max-w-xl mx-auto mb-10"
+          className="mx-auto mb-10 max-w-xl text-base text-white/75 sm:text-lg"
         >
           Text us to schedule a tour or inquire about availability. We&apos;d
           love to host your next shower or celebration.
@@ -41,17 +50,17 @@ export default function CtaStrip() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
+          className="flex flex-col justify-center gap-4 sm:flex-row"
         >
           <Link
             href="/contact"
-            className="px-8 py-3.5 bg-black text-white text-xs tracking-[0.2em] uppercase hover:bg-[#1a1a1a] transition-colors duration-200"
+            className="bg-[#da8990] px-8 py-3.5 text-xs tracking-[0.2em] text-black uppercase transition-colors duration-200 hover:bg-[#e8a8ae]"
           >
             Book a Tour
           </Link>
           <a
             href={`tel:${COMPANY.phoneHref}`}
-            className="inline-flex items-center justify-center gap-2 px-8 py-3.5 border border-black/30 text-black text-xs tracking-[0.2em] uppercase hover:bg-black/10 transition-colors duration-200"
+            className="inline-flex items-center justify-center gap-2 border border-white/50 px-8 py-3.5 text-xs tracking-[0.2em] text-white uppercase transition-all duration-200 hover:border-[#da8990] hover:text-[#da8990]"
           >
             <Phone size={13} />
             Text {COMPANY.phone}
