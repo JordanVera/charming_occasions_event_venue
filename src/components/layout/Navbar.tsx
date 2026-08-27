@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Phone } from 'lucide-react';
-import { ACCENT, NAV_LINKS, COMPANY } from '@/lib/data';
+import { NAV_LINKS, COMPANY } from '@/lib/data';
 import { cn } from '@/lib/utils';
 import SocialLinks from '@/components/layout/SocialLinks';
 
@@ -37,10 +37,10 @@ export default function Navbar() {
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-3 sm:pt-4">
       <nav
         className={cn(
-          'mx-auto flex items-center justify-between rounded-full border px-3 py-2 transition-all duration-300 sm:px-4',
+          'mx-auto flex items-center justify-between rounded-full border bg-primary px-3 py-2 transition-all duration-300 sm:px-4',
           scrolled
-            ? 'max-w-5xl border-white/10 bg-[#0e0c08]/80 shadow-lg shadow-black/20 backdrop-blur-xl'
-            : 'max-w-6xl border-transparent bg-transparent',
+            ? 'max-w-5xl border-white/20 shadow-lg shadow-[#da8990]/30'
+            : 'max-w-6xl border-transparent',
         )}
       >
         <Link href="/" className="flex shrink-0 items-center gap-2 pl-1">
@@ -49,7 +49,7 @@ export default function Navbar() {
             alt={COMPANY.name}
             width={160}
             height={48}
-            className="h-9 w-auto sm:h-10 brightness-0 invert"
+            className="h-12 w-auto sm:h-16"
             priority
           />
         </Link>
@@ -66,18 +66,17 @@ export default function Navbar() {
                 href={link.href}
                 className={cn(
                   'group relative rounded-full px-2.5 py-1.5 text-[11px] font-medium tracking-widest uppercase transition-colors xl:px-3',
-                  isActive ? 'text-[#da8990]' : 'text-white/80 hover:text-white',
+                  isActive ? 'text-white' : 'text-white/80 hover:text-white',
                 )}
               >
                 {link.label}
                 <span
                   className={cn(
-                    'absolute inset-x-3.5 -bottom-0.5 h-px transition-transform duration-300',
+                    'absolute inset-x-3.5 -bottom-0.5 h-px bg-white transition-transform duration-300',
                     isActive
                       ? 'scale-x-100'
                       : 'scale-x-0 group-hover:scale-x-100',
                   )}
-                  style={{ backgroundColor: ACCENT }}
                 />
               </Link>
             );
@@ -88,11 +87,11 @@ export default function Navbar() {
           <SocialLinks
             className="mr-4 md:mr-2"
             iconSize={18}
-            linkClassName="text-white/70 hover:text-[#da8990]"
+            linkClassName="text-white/80 hover:text-white"
           />
           <Link
             href="/contact"
-            className="hidden items-center rounded-full border border-[#da8990] px-3.5 py-1.5 text-[10px] tracking-[0.2em] uppercase text-[#da8990] transition-all duration-200 hover:bg-[#da8990] hover:text-black sm:inline-flex"
+            className="hidden items-center rounded-full border border-white px-3.5 py-1.5 text-[10px] tracking-[0.2em] uppercase text-white transition-all duration-200 hover:bg-white hover:text-primary sm:inline-flex"
           >
             Book a Tour
           </Link>
@@ -119,7 +118,7 @@ export default function Navbar() {
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.18 }}
             className={cn(
-              'mx-auto mt-2 overflow-hidden rounded-3xl border border-white/10 bg-[#0e0c08]/95 p-4 shadow-xl backdrop-blur-xl lg:hidden',
+              'mx-auto mt-2 overflow-hidden rounded-3xl border border-white/20 bg-primary p-4 shadow-xl lg:hidden',
               scrolled ? 'max-w-5xl' : 'max-w-6xl',
             )}
           >
@@ -132,10 +131,10 @@ export default function Navbar() {
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
                     className={cn(
-                      'rounded-xl px-3 py-2.5 text-sm font-medium transition hover:bg-[#da8990]/10',
+                      'rounded-xl px-3 py-2.5 text-sm font-medium transition hover:bg-white/10',
                       isActive
-                        ? 'text-[#da8990]'
-                        : 'text-white hover:text-[#da8990]',
+                        ? 'text-white'
+                        : 'text-white/80 hover:text-white',
                     )}
                   >
                     {link.label}
@@ -147,16 +146,15 @@ export default function Navbar() {
               <Link
                 href="/contact"
                 onClick={() => setMobileOpen(false)}
-                className="rounded-xl px-4 py-3 text-center text-sm font-semibold tracking-[0.15em] uppercase text-black"
-                style={{ backgroundColor: ACCENT }}
+                className="rounded-xl bg-white px-4 py-3 text-center text-sm font-semibold tracking-[0.15em] uppercase text-primary"
               >
                 Book a Tour
               </Link>
               <a
                 href={`tel:${COMPANY.phoneHref}`}
-                className="flex items-center justify-center gap-2 rounded-xl border border-[#da8990]/30 px-4 py-3 text-center text-sm font-medium text-white"
+                className="flex items-center justify-center gap-2 rounded-xl border border-white/40 px-4 py-3 text-center text-sm font-medium text-white"
               >
-                <Phone size={14} style={{ color: ACCENT }} />
+                <Phone size={14} />
                 {COMPANY.phone}
               </a>
             </div>
