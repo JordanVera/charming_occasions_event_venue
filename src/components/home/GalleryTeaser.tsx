@@ -42,33 +42,38 @@ export default function GalleryTeaser() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-          {images.map((img, i) => (
-            <motion.div
-              key={img.id}
-              initial={{ opacity: 0, scale: 0.96 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.08 }}
-              className={`relative overflow-hidden group ${
-                i === 0 || i === 3 ? 'md:row-span-2' : ''
-              }`}
-            >
-              <div
-                className={`relative overflow-hidden ${
-                  i === 0 || i === 3 ? 'h-full min-h-[400px]' : 'aspect-[4/3]'
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 auto-rows-fr">
+          {images.map((img, i) => {
+            const isTall = i === 0 || i === 3;
+            return (
+              <motion.div
+                key={img.id}
+                initial={{ opacity: 0, scale: 0.96 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.08 }}
+                className={`relative overflow-hidden group ${
+                  isTall ? 'md:row-span-2' : ''
                 }`}
               >
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  sizes="(max-width: 768px) 50vw, 33vw"
-                />
-              </div>
-            </motion.div>
-          ))}
+                <div
+                  className={`relative overflow-hidden h-full ${
+                    isTall
+                      ? 'aspect-[4/3] md:aspect-auto md:min-h-[400px]'
+                      : 'aspect-[4/3]'
+                  }`}
+                >
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 768px) 50vw, 33vw"
+                  />
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
