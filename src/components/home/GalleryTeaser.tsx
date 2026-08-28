@@ -42,7 +42,7 @@ export default function GalleryTeaser() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 auto-rows-fr">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
           {images.map((img, i) => {
             const isTall = i === 0 || i === 3;
             return (
@@ -57,10 +57,8 @@ export default function GalleryTeaser() {
                 }`}
               >
                 <div
-                  className={`relative overflow-hidden h-full ${
-                    isTall
-                      ? 'aspect-[4/3] md:aspect-auto md:min-h-[400px]'
-                      : 'aspect-[4/3]'
+                  className={`relative overflow-hidden h-full aspect-[4/3] md:aspect-auto ${
+                    isTall ? 'md:min-h-[400px]' : ''
                   }`}
                 >
                   <Image
